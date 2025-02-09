@@ -1,5 +1,9 @@
 # Astro Starter Kit: Basics
 
+引用 flowbite
+
+<https://flowbite.com/docs/getting-started/astro/>
+
 ```sh
 npm create astro@latest -- --template basics
 ```
