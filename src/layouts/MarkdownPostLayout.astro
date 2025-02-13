@@ -1,6 +1,7 @@
 ---
 import Tags from '../components/Tags.astro'
 import BaseLayout from './BaseLayout.astro'
+import { Icon } from 'astro-icon/components'
 import type { MarkdownFrontmatterType } from '../content.config'
 
 type Props = { frontmatter: MarkdownFrontmatterType }
@@ -13,7 +14,10 @@ const { frontmatter } = Astro.props
   <p>Written by: {frontmatter.author}</p>
   <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
 
-  <Tags tags={frontmatter.tags} />
+  <div class="flex items-center gap-2">
+    <Icon name="mdi:tag-multiple-outline" size={24} />
+    <Tags tags={frontmatter.tags} />
+  </div>
 
   <slot />
 </BaseLayout>
