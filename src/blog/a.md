@@ -5,7 +5,7 @@ pubDate: 2022-07-01
 description: "This is the first post of my new Astro blog."
 author: "Astro Learner"
 image:
-  url: "<https://docs.astro.build/assets/rose.webp>"
+  url: "https://flowbite.com/docs/images/examples/image-1@2x.jpg"
   alt: "The Astro logo on a dark background with a pink glow."
 tags: ["cursor", "code", "AI"]
 ---
