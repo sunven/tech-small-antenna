@@ -1,8 +1,8 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
+@custom-variant dark (&:where(.dark, .dark *));
 
 html {
-  background-color: #f1f5f9;
   font-family: sans-serif;
 }
 
@@ -17,10 +17,6 @@ main {
   margin: 0 auto;
   max-width: 80ch;
   padding: 1rem;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 h1 {
@@ -88,13 +84,4 @@ a:focus {
   .hamburger {
     display: none;
   }
-}
-
-html.dark {
-  background-color: #0d0950;
-  color: #fff;
-}
-
-.dark .nav-links a {
-  color: #fff;
 }
