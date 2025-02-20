@@ -8,11 +8,7 @@ const { frontmatter } = Astro.props
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
-  {
-    frontmatter.image && (
-      <img class="h-auto max-w-full" src={frontmatter.image.url} alt={frontmatter.image.alt || 'img error'} />
-    )
-  }
+  {frontmatter.coverImage && <img class="h-auto max-w-full" src={frontmatter.coverImage} />}
   <!-- https://flowbite.com/docs/typography/blockquote/ -->
   <figure class="max-w-screen-md">
     <blockquote class="p-4 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-gray-800">
@@ -25,8 +21,8 @@ const { frontmatter } = Astro.props
         alt="profile picture"
       />
       <div class="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-300 dark:divide-gray-700">
-        <cite class="pe-3 font-medium text-gray-900 dark:text-white">{frontmatter.author}</cite>
-        <cite class="ps-3 text-sm text-gray-500 dark:text-gray-400">{frontmatter.pubDate.toLocaleDateString()}</cite>
+        <cite class="pe-3 font-medium text-gray-900 dark:text-white">abc</cite>
+        <cite class="ps-3 text-sm text-gray-500 dark:text-gray-400">{frontmatter.lastModified}</cite>
       </div>
     </figcaption>
   </figure>
