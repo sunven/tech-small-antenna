@@ -7,29 +7,44 @@ type Props = { frontmatter: MarkdownFrontmatterType }
 const { frontmatter } = Astro.props
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
-  {frontmatter.coverImage && <img class="h-auto max-w-full" src={frontmatter.coverImage} />}
-  <!-- https://flowbite.com/docs/typography/blockquote/ -->
-  <figure class="max-w-screen-md">
-    <blockquote class="p-4 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-gray-800">
-      <p class="text-xl italic font-medium leading-relaxed text-gray-900 dark:text-white">{frontmatter.description}</p>
-    </blockquote>
-    <figcaption class="flex items-center mt-6 space-x-3 rtl:space-x-reverse">
-      <img
-        class="w-6 h-6 rounded-full"
-        src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
-        alt="profile picture"
-      />
-      <div class="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-300 dark:divide-gray-700">
-        <cite class="pe-3 font-medium text-gray-900 dark:text-white">abc</cite>
-        <cite class="ps-3 text-sm text-gray-500 dark:text-gray-400">{frontmatter.lastModified}</cite>
-      </div>
-    </figcaption>
-  </figure>
+<BaseLayout>
+  <div class="mx-auto w-full max-w-2xl space-y-4">
+    {frontmatter.coverImage && <img class="h-auto max-w-full" src={frontmatter.coverImage} />}
+    <!-- https://flowbite.com/docs/typography/blockquote/ -->
+    <header class="mb-4 lg:mb-6">
+      <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">
+        {frontmatter.title}
+      </h1>
+    </header>
+    {
+      frontmatter.description && (
+        <blockquote class="p-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-gray-800">
+          <p class="text-xl italic font-medium leading-relaxed text-gray-900 dark:text-white">
+            {frontmatter.description}
+          </p>
+        </blockquote>
+      )
+    }
+    <div class="flex items-center gap-2">
+      <Tags tags={frontmatter.tags} />
+    </div>
 
-  <div class="flex items-center gap-2">
-    <Tags tags={frontmatter.tags} />
+    <figure class="max-w-screen-md">
+      <figcaption class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img
+          class="w-6 h-6 rounded-full"
+          src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
+          alt="profile picture"
+        />
+        <div class="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-300 dark:divide-gray-700">
+          <cite class="pe-3 font-medium text-gray-900 dark:text-white">sunven</cite>
+          <cite class="ps-3 text-sm text-gray-500 dark:text-gray-400">{frontmatter.lastModified}</cite>
+        </div>
+      </figcaption>
+    </figure>
+    <article class="format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+      <slot />
+    </article>
   </div>
-  <slot />
 </BaseLayout>
 <style></style>
