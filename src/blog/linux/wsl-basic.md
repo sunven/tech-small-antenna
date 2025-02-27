@@ -154,3 +154,23 @@ wslpath -w ~/documents
 <https://github.com/microsoft/WSL/issues/10753#issuecomment-1814839310>
 
 <https://github.com/microsoft/WSL/releases/tag/2.0.0>
+
+**找不到被占用的端口**
+
+- hyper-v 占用
+  - wsl
+  - wsa 杀进程
+
+```sh
+netsh interface ipv4 reset
+netsh interface ipv6 reset
+netsh winsock reset 
+
+netsh int ipv4 add excludedportrange protocol=tcp startport=3000 numberofports=100
+
+Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+```
+
+<https://stackoverflow.com/questions/58216537/what-is-administered-port-exclusions-in-windows-10>
