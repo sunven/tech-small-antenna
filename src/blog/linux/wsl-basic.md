@@ -1,53 +1,40 @@
 ---
-title: "wsl"
+title: "wsl 基本使用"
 description: "This is the first post of my new Astro blog."
 tags: ["wsl", "linux", "windows"]
 ---
 
 
 
-**wsl: 检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理。**
-<https://github.com/microsoft/WSL/issues/10753#issuecomment-1814839310>
-<https://github.com/microsoft/WSL/releases/tag/2.0.0>
-
-.wslconfig
-
-<https://learn.microsoft.com/zh-cn/windows/wsl/wsl-config#wslconfig>
-
-wsl cli
-
-<https://learn.microsoft.com/zh-cn/windows/wsl/basic-commands>
-
-## 卸载
-
- 1. wsl --unregister Ubuntu
- 2. 利用 Bulk Crap Uninstaller 卸载干净
 
 ## 安装
 
 Microsoft Store 装安装
 
-更换默认用户为 root: <https://superuser.com/questions/1566022/how-to-set-default-user-for-manually-installed-wsl-distro>
+安装后首次启动会让你设置用户名，密码。更换默认用户为 root: <https://superuser.com/questions/1566022/how-to-set-default-user-for-manually-installed-wsl-distro>
+
+`.wslconfig` 文件参考：<https://learn.microsoft.com/zh-cn/windows/wsl/wsl-config#wslconfig>
+
+`wsl cli` 参考：<https://learn.microsoft.com/zh-cn/windows/wsl/basic-commands>
+
+## 卸载
+
+ 1. `wsl --unregister Ubuntu`
+ 2. 利用 `Bulk Crap Uninstaller` 卸载干净
 
 ## 更换 Ubuntu apt-get 源
 
 方法： <https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/>
 
-> 在 Ubuntu 24.04 之前，Ubuntu 的软件源配置文件使用传统的 One-Line-Style，路径为 `/etc/apt/sources.list`；从 Ubuntu 24.04 开始，Ubuntu 的软件源配置文件变更为 DEB822 格式，路径为 `/etc/apt/sources.list.d/ubuntu.sources`。
-
 源： <http://mirrors.aliyun.com/ubuntu/>
 
-> 阿里云的快
+> 在 Ubuntu 24.04 之前，Ubuntu 的软件源配置文件使用传统的 One-Line-Style，路径为 `/etc/apt/sources.list`；从 Ubuntu 24.04 开始，Ubuntu 的软件源配置文件变更为 DEB822 格式，路径为 `/etc/apt/sources.list.d/ubuntu.sources`。
 
 ## 安装 docker
 
 <https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository>
 
 ## docker 镜像
-
-使用代理： <https://docs.docker.com/engine/daemon/proxy/>
-
-但wsl的网络模式影响，nat 不能访问主机代理
 
 <https://github.com/DaoCloud/public-image-mirror>
 
@@ -67,9 +54,15 @@ sudo systemctl daemon-reload
 sudo systemctl restart docker
 ```
 
+> 镜像也慢，不如代理
+
 ## proxy
 
-<https://george.betterde.com/technology/20240608.html>
+使用代理： <https://docs.docker.com/engine/daemon/proxy/>
+
+但wsl的网络模式影响，nat 不能访问主机代理，换成 mirrored
+
+代理设置参考：<https://george.betterde.com/technology/20240608.html>
 
 `/etc/docker/daemon.json`
 
@@ -97,7 +90,7 @@ sudo systemctl restart docker
 }
 ```
 
-## 在 WSL (Windows Subsystem for Linux) 中访问 Windows 文件有几种便捷的方法
+## 在 WSL 中访问 Windows 文件有几种便捷的方法
 
 1. 通过 `/mnt` 目录访问
 
@@ -121,14 +114,10 @@ cd ~/windows_desktop
 - WSL 访问 Windows 文件时性能会比直接在 Linux 文件系统中操作稍慢
 - 建议将开发项目文件放在 WSL 文件系统中以获得更好的性能
 
-让我解释一下 WSL 中文件系统的工作原理：
+性能差异的原因：
 
-1. WSL 有两种存储文件的位置：
-    - Linux 文件系统（通常在 `\\wsl$\<发行版名称>` 下）
-    - Windows 文件系统（通过 `/mnt/c` 等访问）
-2. 性能差异的原因：
-    - 当你通过 `/mnt/c` 访问 Windows 文件时，WSL 需要在 Windows 和 Linux 文件系统之间进行转换，这会带来额外的开销
-    - 在 Linux 文件系统中直接操作文件时，不需要这种转换，所以性能更好
+- 当你通过 `/mnt/c` 访问 Windows 文件时，WSL 需要在Windows 和 Linux 文件系统之间进行转换，这会带来额外的开销
+- 在 Linux 文件系统中直接操作文件时，不需要这种转换，所以性能好
 
 若需频繁操作，建议将文件复制到 WSL 原生目录
 
@@ -158,8 +147,10 @@ wslpath -w ~/documents
 
 ```
 
-## 其它
+## troubleshooting
 
-networkingMode=mirrored
+**wsl: 检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理。**
 
-sudo apt-get update 巨慢
+<https://github.com/microsoft/WSL/issues/10753#issuecomment-1814839310>
+
+<https://github.com/microsoft/WSL/releases/tag/2.0.0>
