@@ -1,6 +1,9 @@
 ---
 import { Icon } from 'astro-icon/components'
 import ThemeIcon from './ThemeIcon.astro'
+import clsx from 'clsx'
+const { pathname } = Astro.url
+const isTags = pathname.startsWith('/tags')
 ---
 
 <header class="h-17 opacity-95">
@@ -42,25 +45,28 @@ import ThemeIcon from './ThemeIcon.astro'
               aria-current="page">首页</a
             >
           </li> -->
-          <li>
+          <!-- <li>
             <a
               href="/posts"
               class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >博客</a
             >
-          </li>
-          <li>
+          </li> -->
+          <!-- <li>
             <a
               href="/categories"
               class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >分类</a
             >
-          </li>
+          </li> -->
           <li>
             <a
+              aria-current="page"
               href="/tags"
-              class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >标签</a
+              class={clsx(
+                'block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700',
+                isTags && 'text-primary-700 dark:text-white'
+              )}>标签</a
             >
           </li>
         </ul>

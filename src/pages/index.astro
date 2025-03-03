@@ -1,10 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import Greeting from '../components/Greeting'
-const pageTitle = ''
+import { getCollection } from 'astro:content'
+import BlogCard from '../components/BlogCard.astro'
+const pageTitle = 'Tech 小天线'
+const allPosts = await getCollection('blog')
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h2>My awesome blog subtitle</h2>
-  <Greeting client:load messages={['Hej', 'Hallo', 'Hola', 'Habari']} />
+  <section class="bg-white dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+      <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
+        <!-- <h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">#{tag}</h2> -->
+        <!-- <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">xxx</p> -->
+      </div>
+      <div class="grid gap-8 lg:grid-cols-2">
+        {allPosts.map(post => <BlogCard post={post} />)}
+      </div>
+    </div>
+  </section>
 </BaseLayout>
