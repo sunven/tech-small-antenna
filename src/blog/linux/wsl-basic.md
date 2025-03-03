@@ -147,7 +147,13 @@ wslpath -w ~/documents
 
 ```
 
+## 备份 WSL
+
+<https://stackoverflow.com/questions/38779801/move-wsl-bash-on-windows-root-filesystem-to-another-hard-drive/51767786#51767786>
+
 ## troubleshooting
+
+常见问题解答：<https://learn.microsoft.com/en-us/windows/wsl/faq>
 
 **wsl: 检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理。**
 
