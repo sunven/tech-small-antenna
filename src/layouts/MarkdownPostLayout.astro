@@ -7,7 +7,7 @@ type Props = { frontmatter: MarkdownFrontmatterType }
 const { frontmatter } = Astro.props
 ---
 
-<BaseLayout>
+<BaseLayout pageTitle={frontmatter.title}>
   <div class="mx-auto w-full max-w-2xl space-y-4">
     {frontmatter.coverImage && <img class="h-auto max-w-full" src={frontmatter.coverImage} />}
     <!-- https://flowbite.com/docs/typography/blockquote/ -->

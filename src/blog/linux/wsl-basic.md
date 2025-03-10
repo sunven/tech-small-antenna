@@ -1,11 +1,10 @@
 ---
 title: "wsl 基本使用"
-description: "This is the first post of my new Astro blog."
+description: "WSL (Windows Subsystem for Linux) 的基本安装、配置、使用方法以及常见问题的解决方案。"
 tags: ["wsl", "linux", "windows"]
 ---
 
-
-
+> 原文链接： <https://blog.llweb.top/posts/linux/wsl-basic>
 
 ## 安装
 
