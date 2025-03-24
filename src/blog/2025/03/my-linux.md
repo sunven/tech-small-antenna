@@ -18,3 +18,7 @@ tags:
 1. 安装 [fisher](https://github.com/jorgebucaran/fisher#installation)
 2. 安装 [bass](https://github.com/edc/bass#with-fisher)
 3. <https://github.com/nvm-sh/nvm#fish>
+
+### pnpm 不识别
+
+执行 `pnpm setup`
