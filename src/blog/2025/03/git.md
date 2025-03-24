@@ -1,8 +1,9 @@
 ---
-title: 
-description: 
+title: git
+description: git
 coverImage: 
-tags: []
+tags:
+  - git
 ---
 
 ![](https://raw.githubusercontent.com/sunven/pic-bed/master/git.png)
@@ -16,7 +17,7 @@ tags: []
 | git commit                                       | 提交                                  |
 | git status                                       | 工作区的状态                              |
 | git diff                                         | 查看修改内容                              |
-| git reset --hard commit_id                       | 版本恢复，`HEAD`指向的版本就是当前版本              |
+| git reset --hard commit_id                       | 版本恢复，`HEAD` 指向的版本就是当前版本              |
 | git checkout -- file                             | 未添加到暂缓区，丢弃工作区的修改                    |
 | git log                                          | 查看提交历史                              |
 | git reflog                                       | 查看命令历史，以便确定要回到未来的哪个版本               |
@@ -112,7 +113,7 @@ git config --system -l
 
 ssh
 
-`~/.ssh/config`文件
+`~/.ssh/config` 文件
 
 Socks 代理
 
@@ -249,7 +250,7 @@ warn: 提交包含混合换行符的文件时给出警告 (默认值)
 
  配置好公私钥之后，仍然无法直接用 git ssh 的方式，下载代码，解决：
 
-`.ssh/config`增加以下二项
+`.ssh/config` 增加以下二项
 
 ```
 Host x.x.com
@@ -296,7 +297,7 @@ release 分支理解为 提测分支。来自 develop
 
 5、测试通过，将此次拉的分支合到 master，如需发正式，从 master 发
 
-![img](./images/git-model.png)
+![](https://raw.githubusercontent.com/sunven/pic-bed/master/git-model.png)
 
 ## git worktree
 
