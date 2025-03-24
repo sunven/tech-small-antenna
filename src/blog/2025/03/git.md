@@ -57,7 +57,7 @@ merge 时生成一个新的 commit，这样，从分支历史上就可以看出�
 
 `git merge --no-ff -m "merge with no-ff" dev`
 
-![](https://raw.githubusercontent.com/sunven/pic-bed/master/git.png)
+![](https://raw.githubusercontent.com/sunven/pic-bed/master/no-fast-forward.png)
 
 ## 丢弃更改
 
