@@ -1,0 +1,14 @@
+{
+  "strictLineBreaks": true,
+  "showLineNumber": true,
+  "spellcheck": true,
+  "showFrontmatter": true,
+  "spellcheckLanguages": null,
+  "attachmentFolderPath": "./attachments",
+  "tabSize": 2,
+  "alwaysUpdateLinks": true,
+  "showInlineTitle": false,
+  "newLinkFormat": "shortest",
+  "useMarkdownLinks": false,
+  "readableLineLength": false
+}
