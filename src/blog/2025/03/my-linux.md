@@ -28,3 +28,11 @@ tags:
 ### pnpm 不识别
 
 执行 `pnpm setup`
+
+### pnpm 命令补全
+
+参考：<https://pnpm.io/completion>
+
+```sh
+pnpm completion fish > ~/.config/fish/completions/pnpm.fish
+```
