@@ -36,3 +36,41 @@ tags:
 ```sh
 pnpm completion fish > ~/.config/fish/completions/pnpm.fish
 ```
+
+## OpenVPN
+
+开机启动
+
+```sh
+sudo vim /usr/lib/systemd/system/openvpn.service
+```
+
+修改 `Type` 和 `ExecStart`，如下：
+
+```sh
+[Unit]
+Description=OpenVPN service
+After=network.target
+
+[Service]
+Type=simple
+RemainAfterExit=yes
+ExecStart= /usr/sbin/openvpn --config /etc/openvpn/VPNConfigBJ.ovpn
+WorkingDirectory=/etc/openvpn
+
+[Install]
+WantedBy=multi-user.target
+```
+
+### 报错
+
+```
+#cipher AES-256-CBC
+```
+
+算法替换：
+
+```
+data-ciphers AES-256-GCM:AES-128-GCM:AES-256-CBC  # 添加 AES-256-CBC 以兼容旧服务端
+data-ciphers-fallback AES-256-CBC 
+```
