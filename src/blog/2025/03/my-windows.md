@@ -1,10 +1,14 @@
 ---
-title: My PC
-description: my pc
+title: My Windows
+description: my windows
 coverImage: 
 tags:
-  - PC
+  - windows
 ---
+
+## scoop
+
+<https://gist.github.com/sunven/2a6ecebefcaadeea95b5a4f6ee3321c2>
 
 ## PicGo
 
@@ -17,3 +21,9 @@ tags:
 ```
 item(title='Upload by PicGo' image=image('D:\Applications\Scoop\apps\picgo\current\PicGo.exe', 0) cmd='picgo' args='upload "@sel.path"')
 ```
+
+## sPowerShell
+
+- Get-InstalledModule
+- Get-InstalledScript
+- $Profile
