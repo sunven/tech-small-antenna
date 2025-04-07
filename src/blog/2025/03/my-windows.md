@@ -27,3 +27,9 @@ item(title='Upload by PicGo' image=image('D:\Applications\Scoop\apps\picgo\curre
 - Get-InstalledModule
 - Get-InstalledScript
 - $Profile
+
+## 问题
+
+### I 形光标在输入框变透明
+
+<https://nvidia.custhelp.com/app/answers/detail/a_id/5157>
