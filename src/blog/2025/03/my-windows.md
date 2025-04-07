@@ -22,7 +22,7 @@ tags:
 item(title='Upload by PicGo' image=image('D:\Applications\Scoop\apps\picgo\current\PicGo.exe', 0) cmd='picgo' args='upload "@sel.path"')
 ```
 
-## sPowerShell
+## PowerShell
 
 - Get-InstalledModule
 - Get-InstalledScript
