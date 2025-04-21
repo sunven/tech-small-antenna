@@ -8,6 +8,7 @@ const schema = z.object({
   description: z.string(),
   coverImage: z.string().nullable().optional(),
   tags: z.array(z.string()),
+  lastModified: z.string().optional(),
 })
 
 // Define a `loader` and `schema` for each collection

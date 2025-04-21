@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content'
 import MarkdownPostLayout from '../../layouts/MarkdownPostLayout.astro'
+import Toc from '../../components/Toc.astro'
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog')
@@ -11,9 +12,12 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props
-const { Content, remarkPluginFrontmatter } = await render(post)
+const result = await render(post)
+// console.log('result', result)
+const { Content, remarkPluginFrontmatter, headings } = result
 ---
 
 <MarkdownPostLayout frontmatter={{ ...post.data, ...remarkPluginFrontmatter }}>
   <Content />
+  <Toc headings={headings} />
 </MarkdownPostLayout>

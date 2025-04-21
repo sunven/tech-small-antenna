@@ -1,0 +1,29 @@
+---
+import type { MarkdownHeading } from 'astro'
+import type { MarkdownHeadingTree } from '../types'
+import TocTree from './TocTree.astro'
+
+const headings = Astro.props.headings
+function buildTree(items: MarkdownHeading[]) {
+  const root: MarkdownHeadingTree = { children: [], depth: 0, text: '', slug: '' } // 虚拟根节点
+  const stack = [root] // 使用栈记录当前路径
+  for (const item of items) {
+    const node: MarkdownHeadingTree = { ...item, children: [] }
+    // 如果当前层级比栈顶层级深，说明是子节点
+    while (node.depth <= stack[stack.length - 1].depth) {
+      stack.pop() // 弹出栈顶，直到找到合适的父级
+    }
+    // 将当前节点添加到父级的 children
+    stack[stack.length - 1].children.push(node)
+    stack.push(node) // 当前节点入栈
+  }
+  return root.children // 返回根节点的子节点（实际树结构）
+}
+---
+
+<div class="fixed top-33 right-40 w-full max-w-xs bg-white p-5">
+  <h6 class="font-bold text-gray-800">On this page</h6>
+  <nav class="space-y-1">
+    <TocTree headingsTree={buildTree(headings)} />
+  </nav>
+</div>

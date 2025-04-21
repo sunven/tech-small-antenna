@@ -1,0 +1,21 @@
+---
+import type { MarkdownHeadingTree } from '../types'
+
+type Props = { headingsTree: MarkdownHeadingTree[] }
+const { headingsTree } = Astro.props
+---
+
+<ul class="list-none !m-0">
+  {
+    headingsTree.map(item => {
+      return (
+        <li class="!m-0">
+          <a href={`#${item.slug}`} class="">
+            {item.text}
+          </a>
+          {item.children.length > 0 && <Astro.self headingsTree={item.children} />}
+        </li>
+      )
+    })
+  }
+</ul>

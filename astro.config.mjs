@@ -1,9 +1,10 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import react from "@astrojs/react";
-
+import remarkToc from 'remark-toc';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import tailwindcss from "@tailwindcss/vite";
-
 import icon from "astro-icon";
 import { remarkModifiedTime } from './remark-modified-time';
 
@@ -15,6 +16,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   markdown: {
-    remarkPlugins: [remarkModifiedTime],
+    remarkPlugins: [remarkModifiedTime, [remarkToc, { heading: "contents" }]],
+    rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'append' }]],
   },
 });
