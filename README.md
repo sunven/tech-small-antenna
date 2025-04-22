@@ -13,3 +13,9 @@
 
 模板: <https://flowbite.com/blocks/>
 组件: <https://flowbite.com/docs/components/accordion/>
+
+## trouble shooting
+
+**404 pagefind/pagefind.js**
+
+需要先build
