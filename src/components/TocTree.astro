@@ -9,7 +9,7 @@ const { headingsTree } = Astro.props
   {
     headingsTree.map(item => {
       return (
-        <li class="!m-0">
+        <li class="nav-link !m-0">
           <a href={`#${item.slug}`} class="">
             {item.text}
           </a>
@@ -19,3 +19,44 @@ const { headingsTree } = Astro.props
     })
   }
 </ul>
+<style>
+  .nav-link a {
+    color: var(--tw-format-body);
+    text-decoration: none;
+  }
+  .nav-link a.active {
+    color: var(--color-primary-500);
+    text-decoration: underline;
+  }
+</style>
+<script>
+  const aList = document.querySelectorAll('.nav-link a')
+  aList.forEach(link => {
+    link.addEventListener('click', () => {
+      aList.forEach(link => {
+        link.classList.remove('active')
+      })
+      link.classList.add('active')
+    })
+  })
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // 找到匹配的导航链接并高亮
+          aList.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`)
+          })
+        }
+      })
+    },
+    {
+      threshold: 0.5,
+    }
+  )
+
+  // 监听所有 section
+  document.querySelectorAll('[id]').forEach(section => {
+    observer.observe(section)
+  })
+</script>
