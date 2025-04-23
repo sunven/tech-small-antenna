@@ -10,7 +10,7 @@ const isTags = pathname.startsWith('/tags')
 <header class="opacity-95">
   <!-- https://flowbite.com/docs/components/navbar/#sticky-navbar -->
   <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
       <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
         <Icon name="mdi:sine-wave" color="purple" size={28} />
         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Tech 小天线</span>
@@ -36,7 +36,7 @@ const isTags = pathname.startsWith('/tags')
         </button>
       </div>
       <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-        <!-- <Search id="search1" className="pagefind-ui yellow" uiOptions={{ showImages: false }} /> -->
+        <Search id="search1" className="pagefind-ui" uiOptions={{ showImages: false }} />
         <ul
           class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
         >
@@ -91,7 +91,7 @@ const isTags = pathname.startsWith('/tags')
     --pagefind-ui-border-radius: 0.25rem;
     --pagefind-ui-font: sans-serif;
 
-    width: 50%;
+    /* width: 50%; */
   }
 
   .pagefind-ui.yellow {
@@ -104,8 +104,10 @@ const isTags = pathname.startsWith('/tags')
   }
 
   .pagefind-ui .pagefind-ui__drawer:not(.pagefind-ui__hidden) {
+    width: 200%;
+    height: 600px;
     position: absolute;
-    left: 0;
+    left: -50%;
     right: 0;
     margin-top: 0px;
     z-index: 9999;
